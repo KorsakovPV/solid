@@ -16,7 +16,7 @@ class AbstractAuthUser(abc.ABC):
     """Абстрактный класс, реализующий обязательные методы."""
 
     @abc.abstractmethod
-    def is_authentication(self) -> bool:
+    def is_authentication(self, x: int) -> bool:
         """
         Метод проверяет аутентификацию пользователя.
         Возвращает True если аутентифицирован и False если не аутентифицирован
