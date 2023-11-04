@@ -3,12 +3,18 @@ import logging
 
 logger = logging.getLogger('root')
 
+from typing import Protocol
 
-class AuthException1(Exception):
+
+class AuthException(Exception):
     pass
 
 
-class AuthException2(Exception):
+class InvalidCredential(AuthException):
+    pass
+
+
+class AuthenticationServerIsNotAvailable(AuthException):
     pass
 
 
@@ -16,7 +22,7 @@ class AbstractAuthUser(abc.ABC):
     """Абстрактный класс, реализующий обязательные методы."""
 
     @abc.abstractmethod
-    def is_authentication(self, x: int) -> bool:
+    def is_authenticated(self, x: int) -> bool:
         """
         Метод проверяет аутентификацию пользователя.
         Возвращает True если аутентифицирован и False если не аутентифицирован
@@ -42,7 +48,7 @@ class AuthUserAD(AbstractAuthUser):
         logger.error('Class AuthUserAD is deprecated. You should use AuthUserKeycloak.')
         super().__init__(*args, **kwargs)
 
-    def is_authentication(self) -> bool:
+    def is_authenticated(self) -> bool:
         raise NotImplementedError()
 
     def get_email(self) -> str:
@@ -53,7 +59,7 @@ class AuthUserAD(AbstractAuthUser):
 
 
 class AuthUserKeycloak(AbstractAuthUser):
-    def is_authentication(self) -> bool:
+    def is_authenticated(self) -> bool:
         raise NotImplementedError()
 
     def get_email(self) -> str:
