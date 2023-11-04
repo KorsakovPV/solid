@@ -334,18 +334,23 @@ import abc
 
 
 class AbstractStore(abc.ABC):
+    @abc.abstractmethod
     def get(self, *args, **kwargs):
         pass
 
+    @abc.abstractmethod
     def get_multi(self, *args, **kwargs):
         pass
 
+    @abc.abstractmethod
     def create(self, *args, **kwargs):
         pass
 
+    @abc.abstractmethod
     def update(self, *args, **kwargs):
         pass
 
+    @abc.abstractmethod
     def delete(self, *args, **kwargs):
         pass
 
