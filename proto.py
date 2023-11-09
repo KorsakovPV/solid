@@ -4,8 +4,8 @@ class Animal(Protocol):
     def feed(self, data: int) -> None:
         pass
 
-    # def eats(self) -> None:
-    #     pass
+    def eats(self) -> None:
+        pass
 
 class Duck:
     def feed(self) -> None:
@@ -13,6 +13,7 @@ class Duck:
 
 def feed(animal: Animal) -> None:
     animal.feed()
+    animal.eats()
 
 duck = Duck()
 feed(duck)

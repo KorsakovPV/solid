@@ -1,4 +1,4 @@
-import abc
+from abc import ABC, abstractmethod
 import logging
 
 logger = logging.getLogger('root')
@@ -18,28 +18,25 @@ class AuthenticationServerIsNotAvailable(AuthException):
     pass
 
 
-class AbstractAuthUser(abc.ABC):
+class AbstractAuthUser(ABC):
     """Абстрактный класс, реализующий обязательные методы."""
 
-    @abc.abstractmethod
+    @abstractmethod
     def is_authenticated(self, x: int) -> bool:
         """
         Метод проверяет аутентификацию пользователя.
         Возвращает True если аутентифицирован и False если не аутентифицирован
         """
-        pass
 
-    @property
-    @abc.abstractmethod
+    # @property
+    @abstractmethod
     def get_email(self) -> str:
         """Метод возвращает email пользователя"""
-        pass
 
-    @property
-    @abc.abstractmethod
+    # @property
+    @abstractmethod
     def get_department(self) -> str:
         """Метод возвращает отдел в котором работает пользователь"""
-        pass
 
 
 class AuthUserAD(AbstractAuthUser):
@@ -66,24 +63,46 @@ class AuthUserKeycloak(AbstractAuthUser):
         raise NotImplementedError()
 
     def get_department(self) -> str:
-        raise NotImplementedError()
+        super().get_department()
+        # raise NotImplementedError()
 
 
-class AbstractStore(abc.ABC):
+auth = AuthUserKeycloak()
+
+
+class AbstractGetStore(ABC):
     def get(self, *args, **kwargs):
         pass
 
     def get_multi(self, *args, **kwargs):
         pass
 
+
+class AbstractCreateStore(ABC):
+
     def create(self, *args, **kwargs):
         pass
+
+
+class AbstractUpdateStore(ABC):
 
     def update(self, *args, **kwargs):
         pass
 
+
+class AbstractDeleteStore(ABC):
+
     def delete(self, *args, **kwargs):
         pass
+
+
+class AbstractStore(
+    AbstractGetStore,
+    AbstractCreateStore,
+    AbstractUpdateStore,
+    AbstractDeleteStore,
+):
+    pass
 
 
 class StoreFile(AbstractStore):
@@ -135,3 +154,6 @@ class StoreMongo(AbstractStore):
 
     def delete(self, *args, **kwargs):
         raise NotImplementedError
+
+
+s = StoreDB()
