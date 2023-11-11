@@ -40,6 +40,7 @@ class AbstractAuthUser(ABC):
 
 
 class AuthUserAD(AbstractAuthUser):
+    """Класс аутентификации через AD"""
 
     def __init__(self, *args, **kwargs):
         logger.error('Class AuthUserAD is deprecated. You should use AuthUserKeycloak.')
