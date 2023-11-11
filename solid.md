@@ -88,8 +88,6 @@ class AbstractAuthUser(ABC):
 методы `is_authenticated`, `get_email`, `get_department` потому, что они декорированы `abstractmethod`, а значит 
 обязательны для реализации в дочерних классах, унаследованных от абстрактного.
 
-Давайте их объявим.
-
 ```python
 from abc import ABC, abstractmethod
 
@@ -126,7 +124,7 @@ auth = AuthUserAD()
 # TypeError: Can't instantiate abstract class AuthUserAD with abstract methods get_department, get_email, is_authenticated
 ```
 
-Это происходит потому, что в нашем классе нет обязательных методов. Но когда эти методы добавим все станет хорошо.
+Давайте их объявим.
 
 ```python
 from abc import ABC, abstractmethod
