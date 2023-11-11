@@ -78,7 +78,7 @@ class AbstractAuthUser(ABC):
         """Метод возвращает отдел в котором работает пользователь"""
 ```
 
-Начнем разбираться по порядку. ABC это класс-помощник, который всего только указывает метакласс `metaclass=ABCMeta`
+Начнем разбираться по порядку. ABC это класс-помощник, который указывает метакласс `metaclass=ABCMeta`
 в качестве параметров класса. Вариант `class AbstractAuthUser(metaclass=abc.ABCMeta):` тоже рабочий, но Python предлагает нам синтаксический сахар мы
 его и используем. Оставим первый вариант.
 
@@ -114,7 +114,7 @@ class AbstractAuthUser(ABC):
 
 
 class AuthUserAD(AbstractAuthUser):
-    pass
+    """Класс аутентификации через AD"""
 
 
 auth = AuthUserAD()
