@@ -548,6 +548,7 @@ from abc import ABC, abstractmethod
 
 
 class AbstractCollector(ABC):
+    """Абстрактный класс коллектора"""
 
     def __init__(self) -> None:
         self.metrics = []
@@ -572,6 +573,8 @@ class AbstractCollector(ABC):
 
 
 class AbstractStore(ABC):
+    """Абстрактный класс для хранения"""
+        
     @abstractmethod
     def get(self, *args, **kwargs):
         pass
@@ -594,6 +597,8 @@ class AbstractStore(ABC):
 
 
 class AbstractReadOnlyStore(ABC):
+    """Абстрактный класс для чтения их хранилища."""
+    
     @abstractmethod
     def get(self, *args, **kwargs):
         pass
@@ -604,6 +609,8 @@ class AbstractReadOnlyStore(ABC):
 
 
 class GetStoreDB:
+    """Класс для получения объекта из БД"""
+    
     def get(self, *args, **kwargs):
         raise NotImplementedError
 
@@ -612,26 +619,32 @@ class GetStoreDB:
 
 
 class CreateStoreDB:
+    """Класс для создания объекта в БД"""
+    
     def create(self, *args, **kwargs):
         raise NotImplementedError
 
 
 class UpdateStoreDB:
+    """Класс для изменения объекта в БД"""
+    
     def update(self, *args, **kwargs):
         raise NotImplementedError
 
 
 class DeleteStoreDB:
+    """Класс для удаления объекта в БД"""
+    
     def delete(self, *args, **kwargs):
         raise NotImplementedError
 
 
 class StoreReadOnlyDB(AbstractReadOnlyStore, GetStoreDB):
-    pass
+    """Клас для сбора метрик. Только чтение."""
 
 
 class StoreDB(AbstractStore, GetStoreDB, CreateStoreDB, UpdateStoreDB, DeleteStoreDB):
-    pass
+    """Клас для хранения метрик."""
 ```
 
 Прежде чем объяснять что тут происходит, еще раз вспомним теорию.
