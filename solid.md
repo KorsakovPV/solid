@@ -673,7 +673,7 @@ class StoreDB(AbstractStore, GetStoreDB, CreateStoreDB, UpdateStoreDB, DeleteSto
 
 ```python
 class StoreReadOnlyDB(CreateStoreDB, UpdateStoreDB):
-    pass
+    """Клас для записи метрик."""
 ```
 
 Хотя это и будет наиболее соответствующий `принципу разделения интерфейса` класс на практике мы так не делаем. А 
