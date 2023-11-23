@@ -308,7 +308,7 @@ class AuthTest(AbstractAuthUser):
 
     def get_email(self) -> str:
         """Метод возвращает значение необходимое для тестов"""
-        return 'skyworker@jedi.com'
+        return 'skywalker@jedi.com'
 
     def get_department(self) -> str:
         """Метод возвращает значение необходимое для тестов"""
